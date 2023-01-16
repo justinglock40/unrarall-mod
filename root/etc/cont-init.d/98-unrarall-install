@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Update package lists
+apk update
+
+# Install wget
+apk install wget -y
+
+target_dir="/unrarall"
+
+# Check if the target directory exists, and create it if it doesn't
+if [ ! -d "$target_dir" ]; then
+  mkdir -p "$target_dir"
+fi
+
+# Change directory to the target directory
+cd "$target_dir"
+
+# Pull Unrarall script 
+wget -q https://raw.githubusercontent.com/arfoll/unrarall/master/unrarall && chmod u+x ./unrarall
