@@ -4,7 +4,7 @@
 apk update
 
 # Install wget
-apk add wget nano -y
+apk-add wget nano
 
 target_dir="/unrarall"
 
