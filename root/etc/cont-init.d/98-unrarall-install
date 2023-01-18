@@ -18,3 +18,19 @@ cd "$target_dir"
 
 # Pull Unrarall script 
 wget -q https://raw.githubusercontent.com/arfoll/unrarall/master/unrarall && chmod u+x ./unrarall
+
+## Set the directory of the script for PATH
+script_dir='/unrarall/unrarall'
+
+# Check if the script directory is already in the PATH
+if echo "$PATH" | grep -q "$script_dir"; then
+    echo "Script directory is already in PATH"
+else
+    # Add the script directory to the PATH
+    echo "Adding script directory to PATH"
+    echo "export PATH=$script_dir:\$PATH" >> ~/.bashrc
+    source ~/.bashrc
+fi
+
+# Pull postProcess.sh 
+wget -q https://raw.githubusercontent.com/justinglock40/unrarall-mod/main/postProcess.sh && chmod u+x ./postProcess.sh
