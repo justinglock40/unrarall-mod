@@ -12,7 +12,7 @@ pathconversion=/mnt/downloads/torrent/converting
 
 pythonpath=/usr/local/sma/venv/bin/python3
 smapath=/usr/local/sma
-unrarpath=/unrarall/unrarall
+unrarpath=/scripts/unrarall
 
 if [ "$torrentcategory" = "bypass" ]; then
 	#echo "skipping this since it's in the bypass category"
