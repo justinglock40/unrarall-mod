@@ -27,8 +27,15 @@ fi
 # Change directory to the target directory
 cd "$target_dir"
 
-# Use a more robust method to add to the PATH variable
-pathmunge "$target_dir"
+# Check if the script directory is already in the PATH
+if echo "$PATH" | grep -q "$target_dir"; then
+    echo "Script directory is already in PATH"
+else
+    # Add the script directory to the PATH
+    echo "Adding script directory to PATH"
+    echo "export PATH=$target_dir:$PATH" >> ~/.bashrc
+    source ~/.bashrc
+fi
 
 # Check if the scripts have already been downloaded before attempting to download them again
 if [ ! -f "$target_dir/unrarall" ]; then
