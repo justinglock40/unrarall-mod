@@ -33,8 +33,8 @@ if echo "$PATH" | grep -q "$target_dir"; then
 else
     # Add the script directory to the PATH
     echo "Adding script directory to PATH"
-    echo "export PATH=$target_dir:$PATH" >> ~/.bashrc
-    source ~/.bashrc
+    echo "export PATH=$PATH:$target_dir" >> /etc/profile
+    source /etc/profile
 fi
 
 # Check if the scripts have already been downloaded before attempting to download them again
