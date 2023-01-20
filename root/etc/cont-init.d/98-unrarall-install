@@ -46,3 +46,15 @@ if [ ! -f "$target_dir/postProcess.sh" ]; then
     curl -O https://raw.githubusercontent.com/justinglock40/unrarall-mod/main/postProcess.sh && chmod u+x "$target_dir/postProcess.sh"
 fi
 
+# Define extraction and conversion paths for postProcess script
+pathextraction="/mnt/downloads/torrent/extracting"
+pathconversion="/mnt/downloads/torrent/converting"
+
+# Check if the directories exist, and create them if they don't
+if [ ! -d "$pathextraction" ]; then
+  mkdir -p "$pathextraction"
+fi
+
+if [ ! -d "$pathconversion" ]; then
+  mkdir -p "$pathconversion"
+fi
