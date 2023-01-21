@@ -39,11 +39,11 @@ fi
 
 # Check if the scripts have already been downloaded before attempting to download them again
 if [ ! -f "$target_dir/unrarall" ]; then
-    curl -O https://raw.githubusercontent.com/arfoll/unrarall/master/unrarall && chmod u+x "$target_dir/unrarall"
+    curl -O https://raw.githubusercontent.com/arfoll/unrarall/master/unrarall && chmod +x "$target_dir/unrarall"
 fi
 
 if [ ! -f "$target_dir/postProcess.sh" ]; then
-    curl -O https://raw.githubusercontent.com/justinglock40/unrarall-mod/main/postProcess.sh && chmod u+x "$target_dir/postProcess.sh"
+    curl -O https://raw.githubusercontent.com/justinglock40/unrarall-mod/main/postProcess.sh && chmod +x "$target_dir/postProcess.sh"
 fi
 
 # Define extraction and conversion paths for postProcess script
