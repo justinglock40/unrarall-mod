@@ -18,6 +18,9 @@ elif [ "$package_manager" == "apt-get" ]; then
   apt-get update -y
 fi
 
+# Add findutils with iregex support for Unrarall script
+apk add findutils
+
 # Check if wget is installed
 if ! command -v wget > /dev/null; then
   echo "wget is not installed. Installing..."
