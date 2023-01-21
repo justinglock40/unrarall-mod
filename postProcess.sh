@@ -23,7 +23,7 @@ if [[ -d "$torrentrootpath" ]]; then
 	#echo "$torrentrootpath" + " is a directory"
 	mkdir "$pathextraction/$torrentname"
 	mkdir "$pathconversion/$torrentname"
-	"$unrarpath" -v -o "$pathextraction/$torrentname" "$torrentrootpath"
+	bash "$unrarpath" -v -o "$pathextraction/$torrentname" "$torrentrootpath"
 	extracted=$?
 	wait $!
 	if [ $extracted -eq 0 ]; then
