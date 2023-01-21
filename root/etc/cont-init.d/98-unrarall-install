@@ -1,20 +1,63 @@
 #!/bin/bash
 
-# Check if wget, nano, and unrar are installed
+# Check for package manager
+if [ "$(command -v apk)" ]; then
+  package_manager="apk"
+elif [ "$(command -v apt-get)" ]; then
+  package_manager="apt-get"
+else
+  echo "Could not find a package manager. Exiting."
+  exit 1
+fi
+
+# Update repository
+echo "Updating repository..."
+if [ "$package_manager" == "apk" ]; then
+  apk update
+elif [ "$package_manager" == "apt-get" ]; then
+  apt-get update -y
+fi
+
+# Check if wget is installed
 if ! command -v wget > /dev/null; then
-  echo "wget is not installed. Exiting."
-  exit 1
+  echo "wget is not installed. Installing..."
+  if [ "$(command -v apk)" ]; then
+    apk add wget
+  elif [ "$(command -v apt-get)" ]; then
+    apt-get install wget -y
+  else
+    echo "Could not find a package manager. Exiting."
+    exit 1
+  fi
 fi
 
+# Check if nano is installed
 if ! command -v nano > /dev/null; then
-  echo "nano is not installed. Exiting."
-  exit 1
+  echo "nano is not installed. Installing..."
+  if [ "$(command -v apk)" ]; then
+    apk add nano
+  elif [ "$(command -v apt-get)" ]; then
+    apt-get install nano -y
+  else
+    echo "Could not find a package manager. Exiting."
+    exit 1
+  fi
 fi
 
+# Check if unrar is installed
 if ! command -v unrar > /dev/null; then
-  echo "unrar is not installed. Exiting."
-  exit 1
+  echo "unrar is not installed. Installing..."
+  if [ "$(command -v apk)" ]; then
+    apk add unrar
+  elif [ "$(command -v apt-get)" ]; then
+    apt-get install unrar -y
+  else
+    echo "Could not find a package manager. Exiting."
+    exit 1
+  fi
 fi
+
+echo "All required utilities are installed."
 
 # Define the target directory
 target_dir="/scripts"
